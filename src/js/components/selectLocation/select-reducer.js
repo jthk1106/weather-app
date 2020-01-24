@@ -48,8 +48,23 @@ export default function SelectReducer(state = defaultState, action) {
 
       return {
         ...state,
+        location: payload.data.name,
         weatherData: payload.data,
         history: [...state.history, timestamp]
+      };
+    }
+
+    case 'GET_WEATHER_PENDING': {
+      return {
+        ...state,
+        location: 'Patience...'
+      };
+    }
+
+    case 'GET_WEATHER_REJECTED': {
+      return {
+        ...state,
+        location: 'Something appears to be amiss...'
       };
     }
     // case 'UPDATE_EXPENSE_AMOUNT': {

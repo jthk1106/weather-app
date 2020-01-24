@@ -9,8 +9,7 @@ export default class SearchHistory extends React.Component {
   }
 
   render() {
-    const { location, history, weatherData } = this.props;
-    console.log('w: ', weatherData)
+    const { history } = this.props;
     const searchHistory = history.map((hit) => {
       return (
         <li className="list-group-item" key={hit.time}>
