@@ -31,6 +31,8 @@ export default class SelectLocation extends React.Component {
 
   handleDefaultSubmit(e) {
     console.log('default location: ', e.target.value);
+    const { dispatch } = this.props;
+    dispatch(getWeather(e.target.value));
   }
 
   render() {
