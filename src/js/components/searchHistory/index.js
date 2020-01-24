@@ -5,9 +5,8 @@ import SearchHistory from './searchHistory';
 // This function takes the store and returns an object that's passed to the props of the component
 function mapStoreToProps(store) {
   return {
-    description: store.select.description,
-    amount: store.select.amount,
-    lineItems: store.select.lineItems
+    location: store.select.location,
+    history: store.select.history
   };
 }
 

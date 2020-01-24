@@ -6,14 +6,15 @@
 // };
 const defaultState = {
   location: '',
-  temperature: ''
+  weatherData: '',
+  history: []
 };
 
 export default function SelectReducer(state = defaultState, action) {
   // the `state = defaultState` above is new ES6 syntax
   // for defining a default value on a parameter
-  const { type, payload } = action;
-  console.log('SelectReducer runs from select-reducer, type: ', type, ' payload: ', payload);
+  const { type, payload, city } = action;
+  console.log('SelectReducer runs from select-reducer, type: ', type, ' payload: ', payload, 'city: ', city);
   switch (type) {
     // case 'UPDATE_EXPENSE_DESCRIPTION': {
     //   // we'll return an object
@@ -32,9 +33,23 @@ export default function SelectReducer(state = defaultState, action) {
     }
 
     case 'GET_WEATHER_FULFILLED': {
+      const date = new Date().toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+      const time = new Date().toLocaleTimeString();
+      const timestamp = {
+        location: payload.data.name,
+        date: date,
+        time: time
+      };
+      console.log('timestamp: ', timestamp, 'time: ', time);
+
       return {
         ...state,
-        temperature: payload.data.main.temp
+        weatherData: payload.data,
+        history: [...state.history, timestamp]
       };
     }
     // case 'UPDATE_EXPENSE_AMOUNT': {

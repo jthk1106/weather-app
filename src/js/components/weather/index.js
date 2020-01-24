@@ -6,7 +6,7 @@ import Weather from './weather';
 function mapStoreToProps(store) {
   return {
     location: store.select.location,
-    temperature: store.select.temperature
+    weatherData: store.select.weatherData
   };
 }
 
